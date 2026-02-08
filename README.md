@@ -192,6 +192,22 @@ var JSONbig = require('json-bigint')({
   alwaysParseAsBig: true,
   useNativeBigInt: true,
 });
+
+#### options.parseAsBigInt32, boolean, default false
+
+Specifies if numbers outside the signed int32 range should be stored as BigNumber/BigInt.
+When enabled, any safe integer less than -2147483648 or greater than 2147483647 is
+treated as a big value (and will follow `useNativeBigInt` and `storeAsString`).
+
+example:
+
+```js
+var JSONbig = require('json-bigint')({ parseAsBigInt32: true });
+var input = '{ "ok": 2147483647, "big": 2147483648 }';
+var result = JSONbig.parse(input);
+console.log(typeof result.ok); // number
+console.log(typeof result.big); // object (BigNumber) unless useNativeBigInt is true
+```
 ```
 
 #### options.protoAction, boolean, default: "error". Possible values: "error", "ignore", "preserve"
