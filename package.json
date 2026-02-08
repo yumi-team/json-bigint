@@ -1,5 +1,5 @@
 {
-  "name": "json-bigint",
+  "name": "@yumi-team/json-bigint",
   "version": "1.0.0",
   "description": "JSON.parse with bigints support",
   "main": "index.js",
